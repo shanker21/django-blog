@@ -10,6 +10,9 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('login/', views.login, name="login"),
     path('logout/', views.logout, name="logout"),
+    #dashboad
+    path('dashboard/', include('dashboards.urls')),
+
     path('category/', include('blogs.urls')),
     path('<slug:slug>/', BlogsView.blogs, name="blogs"),
     #search point
