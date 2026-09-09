@@ -1,0 +1,53 @@
+{% extends 'header.html'%}
+
+{% block content %}
+<div class="row">
+    <!-- left side bar -->
+    <!-- load the side bar here -->
+     {% include 'dashboard/sidebar.html'%}
+     <!-- right side content -->
+      <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>All Users</h2>
+                <a href="{% url 'adduser'%}" class="btn btn-dark text-light">
+                    Add Usres
+                </a>
+            </div>
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>FullName</th>
+                <th>userName</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Staff</th>
+                <th>Superuser</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{user.first_name}}{{user.last_name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{% if user.is_active%} <i class="fa-solid fa-check text-success"> {% else %} <i class="fa-solid fa-times text-danger"> {% endif%}</td>
+                    <td>{% if user.is_staff%} <i class="fa-solid fa-check text-success"> {% else %} <i class="fa-solid fa-times text-danger"> {% endif%}</td>
+                    <td>{% if user.is_superuser%} <i class="fa-solid fa-check text-success"> {% else %} <i class="fa-solid fa-times text-danger"> {% endif%}</td>
+                    <td>
+                        <a href="{% url 'edituser' user.id %}"><i class="fa-solid fa-pen-to-square text-success"></i></a>
+                        &nbsp;
+                        <a href="{% url 'deleteuser' user.id %}"><i class="fa-solid fa-trash text-danger"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+</div>
+
+
+
+{% endblock%}

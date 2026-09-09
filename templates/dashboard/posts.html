@@ -18,8 +18,10 @@
                 <tr>
                 <th>#</th>
                 <th>Blog Name</th>
-                <th>Created at</th>
-                <th>Updated at</th>
+                <th>Category</th>
+                <th>Author</th>
+                <th>status</th>
+                <th>Featured</th>
                 <th>Action</th>
                 </tr>
             </thead>
@@ -28,8 +30,10 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{post.title}}</td>
-                    <td>{{post.created_at | date}}</td>
-                    <td>{{post.update_at | date}}</td>
+                    <td>{{post.category}}</td>
+                    <td>{{post.author}}</td>
+                    <td>{{post.status}}</td>
+                    <td>{{post.is_featured}}</td>
                     <td>
                         <a href="{% url 'editpost' post.id %}"><i class="fa-solid fa-pen-to-square text-success"></i></a>
                         &nbsp;

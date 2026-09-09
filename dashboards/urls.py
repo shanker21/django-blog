@@ -12,4 +12,9 @@ urlpatterns = [
     path('posts/add',views.add_post,name='addpost'),
     path('posts/edit/<int:pk>/',views.edit_post,name='editpost'),
     path('posts/delete/<int:pk>/',views.delete_post, name='deletepost'),
+    #users
+    path('users/',views.users,name='users'),
+    path('user/add',views.add_user,name='adduser'),
+    path('user/edit/<int:pk>/',views.edit_user,name='edituser'),
+    path('user/delete/<int:pk>/',views.delete_user, name='deleteuser'),
 ]
