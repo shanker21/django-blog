@@ -1,0 +1,47 @@
+{% extends 'header.html'%}
+
+{% block content %}
+<div class="row">
+    <!-- left side bar -->
+    <!-- load the side bar here -->
+     {% include 'dashboard/sidebar.html'%}
+     <!-- right side content -->
+      <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>All Blogs</h2>
+                <a href="{% url 'addpost' %}" class="btn btn-dark text-light">
+                    Add Blog
+                </a>
+            </div>
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Blog Name</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.created_at | date}}</td>
+                    <td>{{post.update_at | date}}</td>
+                    <td>
+                        <a href="{% url 'editpost' post.id %}"><i class="fa-solid fa-pen-to-square text-success"></i></a>
+                        &nbsp;
+                        <a href="{% url 'deletepost' post.id %}"><i class="fa-solid fa-trash text-danger"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+</div>
+
+
+
+{% endblock%}
